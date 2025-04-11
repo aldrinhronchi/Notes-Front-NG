@@ -1,4 +1,4 @@
-export interface Usuario {
+export interface Tarefa {
 	ID: number;
 	Titulo: string;
 	Conteudo: string;
@@ -8,5 +8,4 @@ export interface Usuario {
 	Ativo: boolean;
 	DataCriado: Date;
 	DataAlterado?: Date;
-	Token?: string;
 }

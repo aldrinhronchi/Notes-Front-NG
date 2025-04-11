@@ -1,0 +1,13 @@
+.container {
+	min-height: calc(100vh - 10rem);
+	position: relative;
+	padding-bottom: 6rem;
+}
+.button-add {
+	position: fixed;
+	bottom: 4rem;
+	right: 1.5rem;
+	z-index: 1050;
+	padding: 1rem;
+	font-size: 1.5rem;
+}

@@ -1,0 +1,54 @@
+<form #tarefaForm="ngForm">
+	<div class="form-group">
+		<label for="Titulo">Título</label>
+		<input
+			type="text"
+			class="form-control"
+			id="Titulo"
+			name="Titulo"
+			[(ngModel)]="tarefa.Titulo"
+			required
+		/>
+	</div>
+
+	<div class="form-group">
+		<label for="Conteudo">Conteúdo</label>
+		<textarea
+			class="form-control"
+			id="Conteudo"
+			name="Conteudo"
+			[(ngModel)]="tarefa.Conteudo"
+		></textarea>
+	</div>
+
+	<div class="form-check">
+		<input
+			type="checkbox"
+			class="form-check-input"
+			id="Fixado"
+			name="Fixado"
+			[(ngModel)]="tarefa.Fixado"
+		/>
+		<label class="form-check-label" for="Fixado">Fixado</label>
+	</div>
+
+	<div class="form-check">
+		<input
+			type="checkbox"
+			class="form-check-input"
+			id="Concluido"
+			name="Concluido"
+			[(ngModel)]="tarefa.Concluido"
+		/>
+		<label class="form-check-label" for="Concluido">Concluído</label>
+	</div>
+
+	<button
+		type="button"
+		class="btn btn-primary"
+		[disabled]="tarefaForm.invalid"
+		(click)="salvarTarefa()"
+	>
+		Salvar
+	</button>
+</form>

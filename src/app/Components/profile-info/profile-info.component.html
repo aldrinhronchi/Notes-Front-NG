@@ -1,1 +1,33 @@
-<p>profile-info works!</p>
+<div class="d-flex align-items-center gap-3 position-relative">
+	<div
+		class="rounded-circle text-dark d-flex justify-content-center align-items-center"
+		style="width: 48px; height: 48px"
+		[style.background]="AvatarColor"
+	>
+		{{ getInitials(usuario.Nome) }}
+	</div>
+
+	<div class="dropdown">
+		<button class="btn btn-link text-dark dropdown-toggle" type="button" data-bs-toggle="dropdown">
+			{{ usuario.Nome }}
+		</button>
+		<ul class="dropdown-menu dropdown-menu-end">
+			<li>
+				<a class="dropdown-item">Email: {{ usuario.Email }}</a>
+			</li>
+			<li><hr class="dropdown-divider" /></li>
+			<li><a class="dropdown-item" (click)="updateUser(crudContent)">Mudar Dados</a></li>
+			<li><a class="dropdown-item text-danger" (click)="deleteUser()">Excluir Conta</a></li>
+			<li><hr class="dropdown-divider" /></li>
+			<li><a class="dropdown-item" (click)="logout()">Logout</a></li>
+		</ul>
+	</div>
+</div>
+
+<ng-template #crudContent let-modal>
+	<app-modal-usuario
+		[usuario]="usuario"
+		*ngIf="InForm"
+		(CloseModal)="CloseModalUsuarios()"
+	></app-modal-usuario>
+</ng-template>

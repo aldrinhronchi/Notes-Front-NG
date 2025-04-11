@@ -1,1 +1,22 @@
-<p>nav-bar works!</p>
+<nav class="navbar navbar-expand-lg navbar-dark nav-menu">
+	<div class="container-fluid d-flex justify-content-between align-items-center">
+		<a class="navbar-brand" [routerLink]="['/']">Notes</a>
+
+		<button
+			class="navbar-toggler"
+			type="button"
+			data-bs-toggle="collapse"
+			data-bs-target="#navbarNav"
+		>
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<app-profile-info [usuario]="usuario"></app-profile-info>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>

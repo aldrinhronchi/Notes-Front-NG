@@ -1,14 +1,15 @@
 .gradient-custom {
-	background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+	background: linear-gradient(to right, rgba(50, 50, 150, 1), rgba(30, 180, 250, 1));
 }
 
 .card-login {
-	padding: 3rem;
+	padding: 2.5rem;
 
 	@media (min-width: 700px) and (orientation: landscape) and (max-width: 1560px) {
-		padding: 2.5rem;
+		padding: 2rem;
 	}
 }
+
 .div-background {
 	height: 100vh;
 	@media (min-width: 700px) and (orientation: landscape) and (max-width: 1560px) {

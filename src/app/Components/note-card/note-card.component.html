@@ -1,0 +1,13 @@
+<div class="card shadow-sm">
+	<div class="card-body">
+		<h5 class="card-title">{{ tarefa.Titulo }}</h5>
+		<p class="card-text">{{ tarefa.Conteudo }}</p>
+		<small class="text-muted">{{ tarefa.DataCriado | date : "short" }}</small>
+
+		<div class="d-flex justify-content-between mt-3">
+			<button class="btn btn-sm btn-warning" (click)="editar()">Editar</button>
+			<button class="btn btn-sm btn-danger" (click)="deletar()">Excluir</button>
+			<button class="btn btn-sm btn-secondary" (click)="fixarNota()">Fixar</button>
+		</div>
+	</div>
+</div>

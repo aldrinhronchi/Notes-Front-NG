@@ -7,7 +7,5 @@ export interface Usuario {
 	Ativo: boolean;
 	DataCriado: Date;
 	DataAlterado?: Date;
-	UsuarioCriado?: string;
-	UsuarioAlterado?: string;
 	Token?: string;
 }

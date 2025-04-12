@@ -1,5 +1,8 @@
 import { Component } from "@angular/core";
 import { Usuario } from "../../Models/Usuario/Usuario";
+import Swal from "sweetalert2";
+import { UsuarioAPIService } from "../../Shared/Controllers/UsuarioAPI.service";
+import { Router } from "@angular/router";
 
 @Component({
 	selector: "app-sign-up",
@@ -14,10 +17,20 @@ export class SignUpComponent {
 		Login: "",
 		Senha: "",
 		Email: "",
-		Ativo: false,
+		Ativo: true,
 		DataCriado: new Date(),
 	};
-	onSubmit() {
-		console.log("Usuário cadastrado:", this.usuario);
-	}
+	constructor(private UsuarioAPIService: UsuarioAPIService, private router: Router) {}
+
+	SaveUsuario = () => {
+		let item = this.usuario;
+		item.DataAlterado = new Date();
+		this.UsuarioAPIService.SaveUsuario(item).subscribe(res => {
+			Swal.fire(
+				"Cadastrado!",
+				`O usuário <i>${item.Nome}</i> foi cadastrado na base`,
+				"success",
+			).then(x => this.router.navigate(["/login"]));
+		});
+	};
 }

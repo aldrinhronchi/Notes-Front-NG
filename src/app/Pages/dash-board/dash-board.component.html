@@ -1,36 +1,35 @@
 <app-nav-bar></app-nav-bar>
 
 <div class="container mt-4 position-relative">
-	<button class="btn btn-success rounded button-add shadow-lg" (click)="abrirModal()">+</button>
+	<button class="btn btn-success rounded button-add shadow-lg" (click)="AddTarefa(modalContent)">
+		+
+	</button>
 
-	<div *ngIf="allNotes.length > 0" class="row g-4">
-		<div *ngFor="let tarefa of allNotes" class="col-md-4">
+	<div *ngIf="Tarefas.length > 0" class="row g-4">
+		<div *ngFor="let tarefa of Tarefas" class="col-md-4">
 			<app-note-card
 				[tarefa]="tarefa"
-				(onEdit)="editarNota(tarefa)"
-				(onDelete)="deletarNota(tarefa)"
-				(onPinNote)="fixarNota(tarefa)"
+				(onEdit)="EditTarefa(tarefa, modalContent)"
+				(onDelete)="DeleteTarefa(tarefa)"
+				(onPinNote)="PinTarefa(tarefa)"
 			>
 			</app-note-card>
 		</div>
 	</div>
 
-	<div *ngIf="allNotes.length === 0" class="text-center mt-5">
+	<div *ngIf="Tarefas.length === 0" class="text-center mt-5">
 		<p class="fs-5">
-			{{
-				isSearch
-					? "Oops! Nenhuma nota encontrada."
-					: 'Comece criando sua primeira nota! Clique no botão "+" para Adicionar sua primeira nota!'
-			}}
+			Comece criando sua primeira nota! Clique no botão "+" para Adicionar sua primeira nota!
 		</p>
 	</div>
 </div>
 <!-- Modal -->
 <ng-template #modalContent>
-	<app-modal-note
-		[noteData]="modalConfig.data"
-		(onClose)="fecharModal()"
-		(getAllNotes)="buscarNotas()"
+	<app-modal-tarefa
+		[tarefa]="Tarefa!"
+		*ngIf="InForm"
+		(RefreshList)="GetListTarefas()"
+		(CloseModal)="CloseModalTarefas()"
 	>
-	</app-modal-note>
+	</app-modal-tarefa>
 </ng-template>

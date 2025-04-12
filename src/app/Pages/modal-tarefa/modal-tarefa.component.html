@@ -1,54 +1,69 @@
-<form #tarefaForm="ngForm">
-	<div class="form-group">
-		<label for="Titulo">Título</label>
-		<input
-			type="text"
-			class="form-control"
-			id="Titulo"
-			name="Titulo"
-			[(ngModel)]="tarefa.Titulo"
-			required
-		/>
-	</div>
+<div id="ModalTarefas" role="dialog" aria-labelledby="ModalTarefasTitle">
+	<div class="modal-content">
+		<div class="modal-header d-flex justify-content-between">
+			<h5 class="modal-title" id="ModalTarefasTitle" *ngIf="tarefa.ID == 0">Criar Nova Tarefa</h5>
+			<h5 class="modal-title" id="ModalTarefasTitle" *ngIf="tarefa.ID != 0">Editar Tarefa</h5>
+			<button type="button" class="btn-close" (click)="CloseModal()"></button>
+		</div>
 
-	<div class="form-group">
-		<label for="Conteudo">Conteúdo</label>
-		<textarea
-			class="form-control"
-			id="Conteudo"
-			name="Conteudo"
-			[(ngModel)]="tarefa.Conteudo"
-		></textarea>
-	</div>
+		<div class="modal-body">
+			<div class="row">
+				<form #tarefaForm="ngForm">
+					<div class="form-group">
+						<label for="Titulo">Título</label>
+						<input
+							type="text"
+							class="form-control"
+							id="Titulo"
+							name="Titulo"
+							[(ngModel)]="tarefa.Titulo"
+							required
+						/>
+					</div>
 
-	<div class="form-check">
-		<input
-			type="checkbox"
-			class="form-check-input"
-			id="Fixado"
-			name="Fixado"
-			[(ngModel)]="tarefa.Fixado"
-		/>
-		<label class="form-check-label" for="Fixado">Fixado</label>
-	</div>
+					<div class="form-group">
+						<label for="Conteudo">Conteúdo</label>
+						<textarea
+							class="form-control"
+							id="Conteudo"
+							name="Conteudo"
+							[(ngModel)]="tarefa.Conteudo"
+							required
+						></textarea>
+					</div>
 
-	<div class="form-check">
-		<input
-			type="checkbox"
-			class="form-check-input"
-			id="Concluido"
-			name="Concluido"
-			[(ngModel)]="tarefa.Concluido"
-		/>
-		<label class="form-check-label" for="Concluido">Concluído</label>
-	</div>
+					<div class="form-check">
+						<input
+							type="checkbox"
+							class="form-check-input"
+							id="Fixado"
+							name="Fixado"
+							[(ngModel)]="tarefa.Fixado"
+						/>
+						<label class="form-check-label" for="Fixado">Fixado</label>
+					</div>
 
-	<button
-		type="button"
-		class="btn btn-primary"
-		[disabled]="tarefaForm.invalid"
-		(click)="salvarTarefa()"
-	>
-		Salvar
-	</button>
-</form>
+					<div class="form-check">
+						<input
+							type="checkbox"
+							class="form-check-input"
+							id="Concluido"
+							name="Concluido"
+							[(ngModel)]="tarefa.Concluido"
+						/>
+						<label class="form-check-label" for="Concluido">Concluído</label>
+					</div>
+
+					<button
+						type="button"
+						class="btn btn-primary"
+						[disabled]="tarefaForm.invalid"
+						(click)="tarefa.ID == 0 ? AddTarefa() : SaveTarefa()"
+					>
+						Salvar
+					</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

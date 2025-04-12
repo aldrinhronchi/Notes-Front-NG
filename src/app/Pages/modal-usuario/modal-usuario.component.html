@@ -1,9 +1,7 @@
 <div id="ModalUsuarios" role="dialog" aria-labelledby="ModalUsuariosTitle">
 	<div class="modal-content">
 		<div class="modal-header d-flex justify-content-between">
-			<!-- Título no centro -->
 			<h5 class="modal-title" id="ModalUsuariosTitle" *ngIf="usuario.ID != 0">Editar Usuário</h5>
-			<!-- Botão de fechar no canto esquerdo -->
 			<button type="button" class="btn-close" (click)="CloseModal()"></button>
 		</div>
 
@@ -42,19 +40,20 @@
 							id="Login"
 							name="Login"
 							[(ngModel)]="usuario.Login"
+							required
 						/>
 					</div>
 					<div class="form-group">
-						<label for="Login">Senha</label>
+						<label for="Senha">Senha</label>
 						<input
 							type="text"
 							class="form-control"
-							id="Login"
-							name="Login"
+							id="Senha"
+							name="Senha"
 							[(ngModel)]="usuario.Senha"
 						/>
 					</div>
-					<p class="* Caso não queira alterar favor deixar em branco"></p>
+					<p class="text-danger">* Caso não queira alterar a senha favor deixar em branco</p>
 
 					<button
 						type="button"

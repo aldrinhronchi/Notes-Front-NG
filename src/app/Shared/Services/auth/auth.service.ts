@@ -18,5 +18,8 @@ export class AuthService {
 
 	logout(): void {
 		this.loggedIn = false;
+		localStorage.removeItem("Token");
+		localStorage.removeItem("User");
+		localStorage.removeItem("Menu");
 	}
 }

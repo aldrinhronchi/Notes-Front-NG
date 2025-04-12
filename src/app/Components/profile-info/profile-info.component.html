@@ -4,16 +4,16 @@
 		style="width: 48px; height: 48px"
 		[style.background]="AvatarColor"
 	>
-		{{ getInitials(usuario.Nome) }}
+		{{ getInitials(usuario?.Nome) }}
 	</div>
 
 	<div class="dropdown">
 		<button class="btn btn-link text-dark dropdown-toggle" type="button" data-bs-toggle="dropdown">
-			{{ usuario.Nome }}
+			{{ usuario?.Nome }}
 		</button>
 		<ul class="dropdown-menu dropdown-menu-end">
 			<li>
-				<a class="dropdown-item">Email: {{ usuario.Email }}</a>
+				<a class="dropdown-item">Email: {{ usuario?.Email }}</a>
 			</li>
 			<li><hr class="dropdown-divider" /></li>
 			<li><a class="dropdown-item" (click)="updateUser(crudContent)">Mudar Dados</a></li>
@@ -26,7 +26,7 @@
 
 <ng-template #crudContent let-modal>
 	<app-modal-usuario
-		[usuario]="usuario"
+		[usuario]="usuario!"
 		*ngIf="InForm"
 		(CloseModal)="CloseModalUsuarios()"
 	></app-modal-usuario>

@@ -1,0 +1,30 @@
+.card {
+	height: 35vh;
+
+	.bd-card {
+		height: 10vh;
+	}
+
+	.pin-icon {
+		position: absolute;
+		top: 0.6rem;
+		right: 0.6rem;
+		background: none;
+		border: none;
+		padding: 0.3rem;
+		font-size: 1.1rem;
+	}
+
+	.pin-icon i {
+		color: #6c757d;
+	}
+
+	.icon-large {
+		font-size: 1.5rem;
+		margin-right: 1rem;
+	}
+
+	.title-text {
+		font-weight: bold;
+	}
+}

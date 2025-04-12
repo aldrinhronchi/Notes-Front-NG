@@ -1,13 +1,29 @@
-<div class="card shadow-sm">
+<div class="card shadow-sm position-relative">
+	<button class="btn btn-sm btn-secondary pin-icon" (click)="fixarNota()">
+		<i class="bi bi-pin-angle-fill" *ngIf="tarefa.Fixado"></i>
+		<i class="bi bi-pin-angle" *ngIf="!tarefa.Fixado"></i>
+	</button>
 	<div class="card-body">
-		<h5 class="card-title">{{ tarefa.Titulo }}</h5>
-		<p class="card-text">{{ tarefa.Conteudo }}</p>
-		<small class="text-muted">{{ tarefa.DataCriado | date : "short" }}</small>
-
+		<h5 class="card-title d-flex align-items-center">
+			<i class="bi bi-check text-success icon-large" *ngIf="tarefa.Concluido"></i>
+			<span class="title-text">{{ tarefa.Titulo.toLocaleUpperCase() }}</span>
+		</h5>
+		<hr />
+		<div class="bd-card">
+			<p class="card-text">
+				{{
+					tarefa.Conteudo.length > 100 ? tarefa.Conteudo.substring(0, 95) + "..." : tarefa.Conteudo
+				}}
+			</p>
+		</div>
+		<small class="text-muted">{{ tarefa.DataCriado | date : "dd/MM/yyyy HH:mm" }}</small>
 		<div class="d-flex justify-content-between mt-3">
-			<button class="btn btn-sm btn-warning" (click)="editar()">Editar</button>
-			<button class="btn btn-sm btn-danger" (click)="deletar()">Excluir</button>
-			<button class="btn btn-sm btn-secondary" (click)="fixarNota()">Fixar</button>
+			<button class="btn btn-sm btn-primary" (click)="editar()">
+				<i class="bi bi-pen"></i> <span> Editar</span>
+			</button>
+			<button class="btn btn-sm btn-danger" (click)="deletar()">
+				<i class="bi bi-trash"></i> <span> Excluir</span>
+			</button>
 		</div>
 	</div>
 </div>

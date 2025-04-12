@@ -14,8 +14,10 @@ import { FooterComponent } from "./Components/footer/footer.component";
 import { ModalUsuarioComponent } from "./Pages/modal-usuario/modal-usuario.component";
 import { ModalTarefaComponent } from "./Pages/modal-tarefa/modal-tarefa.component";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-import { NoteCardComponent } from './Components/note-card/note-card.component';
-import { ModalNoteComponent } from './Pages/modal-note/modal-note.component';
+import { NoteCardComponent } from "./Components/note-card/note-card.component";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
+import { ErrorHandlerService } from "./Shared/Services/Interceptors/error-handler.service";
+import { TokenInterceptorService } from "./Shared/Services/Interceptors/token-handler.service";
 
 @NgModule({
 	declarations: [
@@ -30,11 +32,21 @@ import { ModalNoteComponent } from './Pages/modal-note/modal-note.component';
 
 		ModalUsuarioComponent,
 		ModalTarefaComponent,
-  NoteCardComponent,
-  ModalNoteComponent,
+		NoteCardComponent,
 	],
-	imports: [BrowserModule, AppRoutingModule, FormsModule, NgbModule],
-	providers: [],
+	imports: [BrowserModule, AppRoutingModule, FormsModule, NgbModule, HttpClientModule],
+	providers: [
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: ErrorHandlerService,
+			multi: true,
+		},
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: TokenInterceptorService,
+			multi: true,
+		},
+	],
 	bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -53,6 +53,6 @@ Acesse a aplicação em http://localhost:4200
 Este projeto está licenciado sob a AGPL-3.0 License.
 
 ## 🔗 Backend
-Este projeto tem um backend disponível em: Notes-Back-CS
+Este projeto tem um backend disponível em: https://github.com/aldrinhronchi/Notes-Back-CS
 
 
